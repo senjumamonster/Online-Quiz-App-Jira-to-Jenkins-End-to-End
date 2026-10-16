@@ -22,7 +22,7 @@ jobs:
         cache: maven
 
     - name: Build and Run Tests with Maven
-      run: mvn clean test
+      run: mvn test -B -Dhttp.keepAlive=false -Dmaven.wagon.http.retryHandler.count=3
 
     - name: Package Application Artifact
-      run: mvn package
+      run: mvn package -B -DskipTests
